@@ -29,11 +29,20 @@ Array<T> &Array<T>::operator=(Array const &other)
 {
     if (this != &other)
     {
+        T *newArr = new T[other._size];
+        try
+        {
+            for (unsigned int i = 0; i < other._size; i++)
+                newArr[i] = other._arr[i];
+        }
+        catch (...)
+        {
+            delete[] newArr;
+            throw;
+        }
         delete[] _arr;
+        _arr = newArr;
         _size = other._size;
-        _arr = new T[_size];
-        for (unsigned int i = 0; i < _size; i++)
-            _arr[i] = other._arr[i];
     }
     return (*this);
 }
