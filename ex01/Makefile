@@ -1,4 +1,4 @@
-NAME := template
+NAME := iter
 
 CXX := c++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -pedantic

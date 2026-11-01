@@ -12,10 +12,18 @@ Array<T>::Array(unsigned int i) : _arr(new T[i]()), _size(i)
 }
 
 template <typename T>
-Array<T>::Array(Array const &other) : _arr(new T[other._size]), _size(other._size)
+Array<T>::Array(Array const &other) : _arr(new T[other._size]()), _size(other._size)
 {
-    for (unsigned int i = 0; i < _size; i++)
-        _arr[i] = other._arr[i];
+    try
+    {
+        for (unsigned int i = 0; i < _size; i++)
+            _arr[i] = other._arr[i];
+    }
+    catch (...)
+    {
+        delete[] _arr;
+        throw;
+    }
 }
 
 template <typename T>
