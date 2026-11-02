@@ -1,4 +1,6 @@
 #include "iter.hpp"
+#include <cctype>
+#include <string>
 
 void times_two(int &i)
 {
